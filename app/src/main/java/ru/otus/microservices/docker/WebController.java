@@ -1,4 +1,4 @@
-    package ru.otus.microservices.docker;
+package ru.otus.microservices.docker;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
