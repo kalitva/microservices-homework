@@ -1,0 +1,19 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="hw4.create-user" author="Stanislav Semenchuk">
+        <createTable tableName="users">
+            <column name="id" type="integer">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="username" type="varchar(255)" />
+            <column name="first_name" type="varchar(255)" />
+            <column name="last_name" type="varchar(255)" />
+            <column name="email" type="varchar(255)" />
+            <column name="phone" type="varchar(255)" />
+        </createTable>
+        <createSequence sequenceName="seq_users" />
+    </changeSet>
+</databaseChangeLog>
