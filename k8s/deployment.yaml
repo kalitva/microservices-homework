@@ -18,6 +18,27 @@ spec:
     spec:
       containers:
       - name: otus-hw
-        image: kali7va/otus-hw:latest
+        image: kali7va/otus-hw:0.2
         ports:
         - containerPort: 8000
+        env:
+        - name: SERVER_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: server.port
+        - name: POSTGRES_URL
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: url
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: username
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: app-postgresql
+              key: password
