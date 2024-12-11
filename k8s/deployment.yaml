@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: otus-hw
-        image: kali7va/otus-hw:0.2
+        image: kali7va/otus-hw:0.3
         ports:
         - containerPort: 8000
         env:

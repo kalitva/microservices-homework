@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -24,14 +26,14 @@ public class UserController {
     }
 
     @PostMapping
-    public void create(@RequestBody User user) {
-        userService.create(user);
+    public Map<String, Long> create(@RequestBody User user) {
+        return Map.of("id", userService.create(user));
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable long id, @RequestBody User user) {
+    public User update(@PathVariable long id, @RequestBody User user) {
         user.setId(id);
-        userService.update(user);
+        return userService.update(user);
     }
 
     @DeleteMapping("/{id}")

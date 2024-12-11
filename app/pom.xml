@@ -12,7 +12,7 @@
 
     <groupId>ru.otus.microservices</groupId>
     <artifactId>app</artifactId>
-    <version>0.1</version>
+    <version>0.3</version>
     <name>app</name>
     <description>Microservices homework</description>
 

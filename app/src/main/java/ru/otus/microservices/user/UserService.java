@@ -1,7 +1,6 @@
 package ru.otus.microservices.user;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
@@ -16,15 +15,16 @@ public class UserService {
                 .orElseThrow(() -> new UserNotFoundException(id));
     }
 
-    public void create(User user) {
-        userRepository.save(user);
+    public long create(User user) {
+        User saved = userRepository.save(user);
+        return saved.getId();
     }
 
-    public void update(User user) {
+    public User update(User user) {
         if (!userRepository.existsById(user.getId())) {
             throw new UserNotFoundException(user.getId());
         }
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 
     public void delete(long id) {
