@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2024-12-04T17:36:24Z"
+  name: app-config
+  namespace: app
+data:
+  server.port: "8000"
+  url: "jdbc:postgresql://app-postgresql/app"
+  username: app
+  password: app

@@ -1,0 +1,288 @@
+{
+	"info": {
+		"_postman_id": "5302c5ca-c3a9-4c01-9b11-da2c4ac22e9b",
+		"name": "arch.homework",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24313087"
+	},
+	"item": [
+		{
+			"name": "health",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"should response with status 200\", () => {",
+							"    pm.response.to.have.status(200)",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "arch.homework/health/",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"health",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create Vasya",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Vasya id should be present\", () => {",
+							"    const json = pm.response.json()",
+							"    pm.expect(json).to.have.property('id')",
+							"    pm.collectionVariables.set(\"vasyaId\", json.id)",
+							"})",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"punisher\",\n    \"firstName\": \"Vasya\",\n    \"lastName\": \"Petrov\",\n    \"email\": \"pussykiller@gmail.com\",\n    \"phone\": \"8-928-010-1010\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "arch.homework/users",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create Petya",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Petya id should be present\", () => {",
+							"    const json = pm.response.json()",
+							"    pm.expect(json).to.have.property('id')",
+							"    pm.collectionVariables.set(\"petyaId\", json.id)",
+							"})",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"striker\",\n    \"firstName\": \"Petya\",\n    \"lastName\": \"Ivanov\",\n    \"email\": \"papashka@gmail.com\",\n    \"phone\": \"8-928-010-2020\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "arch.homework/users",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Vasya",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"should response with Vasya\", () => {",
+							"    const json = pm.response.json()",
+							"    pm.expect(json.firstName).to.eql('Vasya')",
+							"    pm.expect(json.lastName).to.eql('Petrov')",
+							"})",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "arch.homework/users/{{vasyaId}}",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"users",
+						"{{vasyaId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update Petya",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"should update Petya's email\", () => {",
+							"    const json = pm.response.json()",
+							"    pm.expect(json.email).to.eql('masik@gmail.com')",
+							"})",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"striker\",\n    \"firstName\": \"Petya\",\n    \"lastName\": \"Ivanov\",\n    \"email\": \"masik@gmail.com\",\n    \"phone\": \"8-928-010-2020\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "arch.homework/users/{{petyaId}}",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"users",
+						"{{petyaId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Vasya",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"should response with status 200\", () => {",
+							"    pm.response.to.have.status(200)",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "arch.homework/users/{{vasyaId}}",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"users",
+						"{{vasyaId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get deleted Vasya",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"should response with status 404\", () => {",
+							"    pm.response.to.have.status(404)",
+							"})",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "arch.homework/users/{{vasyaId}}",
+					"host": [
+						"arch",
+						"homework"
+					],
+					"path": [
+						"users",
+						"{{vasyaId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "vasyaId",
+			"value": ""
+		},
+		{
+			"key": "petyaId",
+			"value": ""
+		}
+	]
+}

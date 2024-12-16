@@ -1,0 +1,13 @@
+# define default database user, name, and password for PostgreSQL deployment
+auth:
+  enablePostgresUser: true
+  username: "app"
+  database: "app"
+
+primary:
+  persistence:
+    enabled: true
+    existingClaim: "postgres-pvc"
+
+volumePermissions:
+  enabled: true
