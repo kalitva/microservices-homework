@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: app
+  datasource:
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    username: ${POSTGRES_USER}
+    url: ${POSTGRES_URL}
+  jpa:
+    open-in-view: 'false'
+  liquibase:
+    changelog: classpath:changelog/db.changelog-master.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus,health,info
+  metrics:
+    distribution:
+      percentiles:
+        http.server.requests:
+          - 0.5
+          - 0.95
+          - 0.99
+    enable:
+      application: false
+      disk: false
+      jdbc: false
+      tomcat: false
+      hikaricp: false
+      process: false
+      executor: false
+      jvm: false
+      system: false
+      spring.data: false
+      logback: false
